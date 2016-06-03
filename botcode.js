@@ -1,4 +1,5 @@
 var phatic = new LineGetter();
+var botname = new LineGetter();
 
 phatic.feed("this is interesting, please tell me more");
 phatic.feed("i'm all ears");
@@ -7,13 +8,20 @@ phatic.feed("you have your way with words");
 phatic.feed("this sounds like a good story");
 phatic.feed("please continue");
 
+botname.feed("my name is Nobot");
+botname.feed("they call me Nobot");
+botname.feed("i go by the name of Nobot");
+
 function Reply() {
 
 // Find HTML elements that we need
 
 var el = document.getElementById("target");
 var debug = document.getElementById("debug");
-debug.innerHTML = ''; // clear debug window
+
+// Clear debug window
+
+debug.innerHTML = ''; 
 
 // Record user input before it gets transformed
 
@@ -22,11 +30,12 @@ var old_txt = txt;
 
 el.innerHTML = el.innerHTML + "<br>" + old_txt;
 
+txt = simplify_user_sentence(txt);
+
 var reply = "NO_ANSWER";
 
-if (reply == "NO_ANSWER") {
-   reply = phatic.pick_new();
-}
+if (txt == "BOT_NAME")    reply = botname.pick_new();
+if (reply == "NO_ANSWER") reply = phatic.pick_new();
 
 el.innerHTML = el.innerHTML + "<br><b>" + reply + "</b>";
 }
