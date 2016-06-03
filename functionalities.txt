@@ -1,0 +1,2 @@
+0.001: bot displays random message encouraging user to carry on
+0.000: bot reads input

@@ -46,9 +46,9 @@ LineGetter.prototype = {
     // (primitive hack, not foolproof but close enough)
 		
     if (this.old == txt)
-      txt = pick_one(this.lines);
+      txt = this.pick();
     if (this.old == txt)
-      txt = pick_one(this.lines);
+      txt = this.pick();
 		
     // save the old line
 		
