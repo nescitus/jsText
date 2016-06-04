@@ -1,6 +1,7 @@
 var phatic = new LineGetter();
 var botname = new LineGetter();
 var dont_repeat = new LineGetter();
+var empty_input = new LineGetter();
 
 var repetition = [];
 
@@ -19,6 +20,11 @@ dont_repeat.feed("do you have to repeat yourself?");
 dont_repeat.feed("this is going nowhere");
 dont_repeat.feed("it seems boring to repeat the same thing all over again");
 dont_repeat.feed("are you a bot? bots tend to repeat themselves");
+
+empty_input.feed("i must admit that i'm confused");
+empty_input.feed("please say something meaningful");
+empty_input.feed("we're supposed to talk, aren't we?");
+empty_input.feed("is there a connection problem?");
 
 function Reply() {
 
@@ -43,14 +49,20 @@ debug.innerHTML = txt;
 
 var reply = "NO_ANSWER";
 
-// we detect repetitions by transformed text
+// detect null input
 
-repetition.push(txt);
-var length = repetition.length;
+if (txt=='') reply = "EMPTY_INPUT";
 
-if (length > 2) {
-   if (repetition[length-2] == repetition[length-1])
-      reply = "PROTEST_REPETITION";
+// detect repetitions (of transformed text)
+
+if (reply == "NO_ANSWER") {
+   repetition.push(txt);
+   var length = repetition.length;
+
+   if (length > 2) {
+      if (repetition[length-2] == repetition[length-1])
+         reply = "PROTEST_REPETITION";
+   }
 }
 
 // pick a reply from one of the response lists.
@@ -59,6 +71,7 @@ if (length > 2) {
 if (txt == "BOT_NAME")    reply = botname.pick_new();
 if (reply == "NO_ANSWER") reply = phatic.pick_new();
 if (reply == "PROTEST_REPETITION") reply = dont_repeat.pick_new();
+if (reply == "EMPTY_INPUT") reply = empty_input.pick_new();
 
 el.innerHTML = el.innerHTML + "<br><b>" + reply + "</b>";
 }
