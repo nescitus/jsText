@@ -1,2 +1,4 @@
+0.003: user repetition detection, debug of user input transformation
+0.002: basic user input transformation
 0.001: bot displays random message encouraging user to carry on
 0.000: bot reads input

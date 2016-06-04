@@ -47,11 +47,43 @@ var simplify_user_sentence = function(txt) {
 
 txt = preprocess_input(txt);
 
-txt = txt.rep_all(" is ur ", " is your ");
+// solve apostrophes
+
 txt = txt.rep_all(" what's ", " what is ");
+txt = txt.rep_all(" that's ", " that is ");
+txt = txt.rep_all(" it's ", " it is ");
+txt = txt.rep_all(" she's ", " she is ");
+txt = txt.rep_all(" he's ", " he is ");
+txt = txt.rep_all(" im ", " i am ");
+txt = txt.rep_all(" i'm ", " i am ");
+txt = txt.rep_all(" i'll ", " i will ");
+txt = txt.rep_all(" wont ", " will not ");
+txt = txt.rep_all(" wouldn't ", " would not ");
+txt = txt.rep_all(" shouldn't ", " should not ");
+txt = txt.rep_all(" couldn't ", " could not ");
+txt = txt.rep_all(" doesn't ", " does not ");
+txt = txt.rep_all(" don't ", " do not ");
+txt = txt.rep_all(" didn't ", " did not ");
+
+// solve chat abbreviations
+
+txt = txt.rep_all(" do u ", " do you ");
+txt = txt.rep_all(" to u ", " to you ");
+txt = txt.rep_all(" r u ", " are you ");
+txt = txt.rep_all(" are u ", " are you ");
+txt = txt.rep_all(" can u ", " can you ");
+txt = txt.rep_all(" ur ", " your ");
+txt = txt.rep_all(" not u ", " not you ");
+
+txt = txt.rep_all(" wanna ", " want to ");
+txt = txt.rep_all(" gonna ", " going to ");
+
+txt = txt.rep_all(" may i have ", " i want ");
+txt = txt.rep_all(" can i have ", " i want ");
 
 txt = txt.rep_all(" what is your name ", "BOT_NAME");
 txt = txt.rep_all(" what is your name? ", "BOT_NAME");
+txt = txt.rep_all(" tell me your name ", "BOT_NAME");
 
 return postprocess_input(txt);
 }
