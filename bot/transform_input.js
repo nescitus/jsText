@@ -75,15 +75,34 @@ txt = txt.rep_all(" can u ", " can you ");
 txt = txt.rep_all(" ur ", " your ");
 txt = txt.rep_all(" not u ", " not you ");
 
+// solve colloquial forms
+
 txt = txt.rep_all(" wanna ", " want to ");
 txt = txt.rep_all(" gonna ", " going to ");
+
+// solve long-winded constructions
 
 txt = txt.rep_all(" may i have ", " i want ");
 txt = txt.rep_all(" can i have ", " i want ");
 
+// standartise greeting
+
+txt = txt.rep_all(" hello ", " hi ");
+txt = txt.rep_all(" hullo ", " hi ");
+txt = txt.rep_all(" aloha ", " hi ");
+
+// phrases to tags
+
 txt = txt.rep_all(" what is your name ", "BOT_NAME");
 txt = txt.rep_all(" what is your name? ", "BOT_NAME");
 txt = txt.rep_all(" tell me your name ", "BOT_NAME");
+txt = txt.rep_all(" how do they call you ", "BOT_NAME");
+txt = txt.rep_all(" how do they call you? ", "BOT_NAME");
+
+txt = txt.rep_all(" hi nobot ", "HI_USER");
+txt = txt.rep_all(" hi bot ", "HI_USER");
+txt = txt.rep_all(" hi there ", "HI_USER");
+txt = txt.rep_all(" hi ", "HI_USER");
 
 return postprocess_input(txt);
 }

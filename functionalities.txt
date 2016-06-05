@@ -1,3 +1,4 @@
+0.005: reply for "hi"
 0.004: null input detection
 0.003: user repetition detection, debug of user input transformation
 0.002: basic user input transformation

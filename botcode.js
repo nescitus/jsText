@@ -1,30 +1,10 @@
-var phatic = new LineGetter();
-var botname = new LineGetter();
-var dont_repeat = new LineGetter();
-var empty_input = new LineGetter();
+// to work we need:
+//<script src="tools/mystring.js"></script>
+//<script src="modules/line_getter.js"></script>
+//<script src="bot/transform_input.js"></script>
+//<script src="bot/alt_replies.js"></script>
 
 var repetition = [];
-
-phatic.feed("this is interesting, please tell me more");
-phatic.feed("i'm all ears");
-phatic.feed("carry on, please");
-phatic.feed("you have your way with words");
-phatic.feed("this sounds like a good story");
-phatic.feed("please continue");
-
-botname.feed("my name is Nobot");
-botname.feed("they call me Nobot");
-botname.feed("i go by the name of Nobot");
-
-dont_repeat.feed("do you have to repeat yourself?");
-dont_repeat.feed("this is going nowhere");
-dont_repeat.feed("it seems boring to repeat the same thing all over again");
-dont_repeat.feed("are you a bot? bots tend to repeat themselves");
-
-empty_input.feed("i must admit that i'm confused");
-empty_input.feed("please say something meaningful");
-empty_input.feed("we're supposed to talk, aren't we?");
-empty_input.feed("is there a connection problem?");
 
 function Reply() {
 
@@ -66,12 +46,23 @@ if (reply == "NO_ANSWER") {
 }
 
 // pick a reply from one of the response lists.
-// this is not too imaginative, but works well.
+// this is still not too imaginative, but works well.
 
-if (txt == "BOT_NAME")    reply = botname.pick_new();
-if (reply == "NO_ANSWER") reply = phatic.pick_new();
+if (reply == "NO_ANSWER") {
+   if (txt == "BOT_NAME")    reply = botname.pick_new();
+   if (txt == "HI_USER")     reply = hello.pick_new();
+}
+
+// special case code for undesired user behaviour
+
 if (reply == "PROTEST_REPETITION") reply = dont_repeat.pick_new();
 if (reply == "EMPTY_INPUT") reply = empty_input.pick_new();
+
+// TODO: (long term plan) generate several replies using 
+// different algorithms, stack them in an array, grade them,
+// pick the most approppriate
+
+if (reply == "NO_ANSWER") reply = phatic.pick_new();
 
 el.innerHTML = el.innerHTML + "<br><b>" + reply + "</b>";
 }
