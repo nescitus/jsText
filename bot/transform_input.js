@@ -104,5 +104,9 @@ txt = txt.rep_all(" hi bot ", "HI_USER");
 txt = txt.rep_all(" hi there ", "HI_USER");
 txt = txt.rep_all(" hi ", "HI_USER");
 
+// foul language detection
+
+if(txt.contains("fuck")) txt = "USER_SWEARS";
+
 return postprocess_input(txt);
 }

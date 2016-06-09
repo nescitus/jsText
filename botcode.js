@@ -51,6 +51,7 @@ if (reply == "NO_ANSWER") {
 if (reply == "NO_ANSWER") {
    if (txt == "BOT_NAME")    reply = botname.pick_new();
    if (txt == "HI_USER")     reply = hello.pick_new();
+   if (txt == "USER_SWEARS") reply = user_swears.pick_new();
 }
 
 // special case code for undesired user behaviour

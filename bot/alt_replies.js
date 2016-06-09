@@ -22,6 +22,7 @@ var phatic = new LineGetter();
 var botname = new LineGetter();
 var dont_repeat = new LineGetter();
 var empty_input = new LineGetter();
+var user_swears = new LineGetter();
 
 hello.feed("hi there");
 hello.feed("hello human");
@@ -47,3 +48,9 @@ empty_input.feed("i must admit that i'm confused");
 empty_input.feed("please say something meaningful");
 empty_input.feed("we're supposed to talk, aren't we?");
 empty_input.feed("is there a connection problem?");
+
+user_swears.feed("can you put it into different words?");
+user_swears.feed("feeling better now?");
+user_swears.feed("we aren't going to talk like that");
+user_swears.feed("strong language betrays weak self-control");
+user_swears.feed("your reply seems quite emotional");
