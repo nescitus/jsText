@@ -84,6 +84,9 @@ txt = txt.rep_all(" gonna ", " going to ");
 
 txt = txt.rep_all(" may i have ", " i want ");
 txt = txt.rep_all(" can i have ", " i want ");
+txt = txt.rep_all(" please tell me ", " tell me ");
+txt = txt.rep_all(" tell me how ", " how ");
+txt = txt.rep_all(" tell me what ", " what ");
 
 // standartise greeting
 

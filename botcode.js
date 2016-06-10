@@ -29,6 +29,10 @@ debug.innerHTML = txt;
 
 var reply = "NO_ANSWER";
 
+// do we have a reply in memory?
+
+reply = find_reply(txt);
+
 // detect null input
 
 if (txt=='') reply = "EMPTY_INPUT";

@@ -1,8 +1,4 @@
-/**************************************************************************
-*   This file is a part of jsText project - a set of tools designed       *
-*   for natural language processing, creating chat bots and writing       *
-*   generative poetry.                                                    *
-*                                                                         * 
+/***************************************************************************
 *   Copyright (C) 2016, Pawel Koziol                                      *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
@@ -21,27 +17,29 @@
 *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
 ***************************************************************************/
 
-// does a string contain a substring?
+var resp_to = [];
+var resp_by = [];
 
-String.prototype.contains = function(query) {
-    if (this.indexOf(query) != -1) return 1;
-	return 0;
+function feed_reply(to, by) {
+  resp_to.push(to);
+  resp_by.push(by);
 }
 
-// replace all occurences of a substring
+function find_reply(to) {
+  var length = resp_to.length;
+  for (var i = 0; i < length; i++) {
 
-String.prototype.rep_all = function(_old, _new) {
-	var reg = new RegExp(_old, "g");
-    return this.replace(reg, _new);   
+     // fuzzy match using Levenstein distance
+	 
+	 var dist = _distance(to, resp_to[i]);
+
+     if (dist > 0.90) {
+		 return resp_by[i];
+	 }
+  }
+
+  return "NO_ANSWER";
 }
 
-// start a string with a capital letter
-
-String.prototype.capitalize_first = function()
-{
-    return this && this[0].toUpperCase() + this.slice(1);
-}
-
-String.prototype.replaceAt=function(index, character) {
-    return this.substr(0, index) + character + this.substr(index+character.length);
-}
+feed_reply("what is the meaning of life?", "42");
+feed_reply("how are you?", "fine, thanks");

@@ -31,7 +31,7 @@ hello.feed("nice to meet you, user");
 phatic.feed("this is interesting, please tell me more");
 phatic.feed("i'm all ears");
 phatic.feed("carry on, please");
-phatic.feed("you have your way with words");
+phatic.feed("you have your way with words, please go on");
 phatic.feed("this sounds like a good story");
 phatic.feed("please continue");
 
@@ -49,7 +49,7 @@ empty_input.feed("please say something meaningful");
 empty_input.feed("we're supposed to talk, aren't we?");
 empty_input.feed("is there a connection problem?");
 
-user_swears.feed("can you put it into different words?");
+user_swears.feed("can you put it into different words, please?");
 user_swears.feed("feeling better now?");
 user_swears.feed("we aren't going to talk like that");
 user_swears.feed("strong language betrays weak self-control");

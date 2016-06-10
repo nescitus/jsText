@@ -67,3 +67,19 @@ function randomString(string_length) {
 	}
 	return randomstring;
 }
+
+function modifyString(aim, old) {
+
+	var chars = " aąbcćdeęfghijklłmnńoópqrsśtuwxyzżź,.: ";
+	var randomstring = '';
+	var length = old.length;
+	var loc = Math.floor(Math.random() * length);
+	var rnum = Math.floor(Math.random() * chars.length);
+	var new_char = chars.substring(rnum,rnum+1);
+	
+	if (aim.charAt(loc) != old.charAt(loc))
+	randomstring = old.replaceAt(loc, new_char);
+
+	return randomstring;
+	
+}
