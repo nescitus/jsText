@@ -24,8 +24,16 @@ var old_txt = txt;
 
 el.innerHTML = el.innerHTML + "<br>" + old_txt;
 
+// tags
+
+var tag = "TAG_UNKNOWN";
+if (txt.contains("?")) {
+   tag = "QUESTION_UNKNOWN";
+   txt = txt.replace("?","");
+}
+
 txt = simplify_user_sentence(txt);
-debug.innerHTML = txt;
+debug.innerHTML = txt + ' ' + tag;
 
 var reply = "NO_ANSWER";
 
@@ -55,6 +63,8 @@ if (reply == "NO_ANSWER") {
 if (reply == "NO_ANSWER") {
    if (txt == "BOT_NAME")    reply = botname.pick_new();
    if (txt == "HI_USER")     reply = hello.pick_new();
+   if (txt == "HOW_ARE_YOU") reply = i_feel.pick_new();
+   if (txt == "RU_SMART")    reply = smart.pick_new();
    if (txt == "USER_SWEARS") reply = user_swears.pick_new();
 }
 

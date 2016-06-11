@@ -23,6 +23,8 @@ var botname = new LineGetter();
 var dont_repeat = new LineGetter();
 var empty_input = new LineGetter();
 var user_swears = new LineGetter();
+var i_feel = new LineGetter();
+var smart = new LineGetter();
 
 hello.feed("hi there");
 hello.feed("hello human");
@@ -54,3 +56,13 @@ user_swears.feed("feeling better now?");
 user_swears.feed("we aren't going to talk like that");
 user_swears.feed("strong language betrays weak self-control");
 user_swears.feed("your reply seems quite emotional");
+
+i_feel.feed("fine, thanks");
+i_feel.feed("i'm feeling very well today. and you?");
+i_feel.feed("i feel great");
+i_feel.feed("i feel really good");
+i_feel.feed("i'm doing great. what about you?");
+
+smart.feed("i am only as smart as my programmer made me");
+smart.feed("and what's your opinion?");
+smart.feed("that's not a part of my job description");

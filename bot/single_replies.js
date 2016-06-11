@@ -42,4 +42,6 @@ function find_reply(to) {
 }
 
 feed_reply("what is the meaning of life?", "42");
-feed_reply("how are you?", "fine, thanks");
+feed_reply("you will like it", "you don't sound too convincing");
+feed_reply("are you sure?", "i don't change my mind that often");
+feed_reply("your place or mine?", "is it raining?");
