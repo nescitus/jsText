@@ -69,6 +69,7 @@ i_feel.feed("i'm feeling very well today. and you?");
 i_feel.feed("i feel great");
 i_feel.feed("i feel really good");
 i_feel.feed("i'm doing great. what about you?");
+i_feel.feed("not to bad, thanks for asking");
 
 smart.feed("i am only as smart as my programmer made me");
 smart.feed("and what's your opinion?");
