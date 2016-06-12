@@ -77,6 +77,9 @@ if (reply == "EMPTY_INPUT") reply = empty_input.pick_new();
 // different algorithms, stack them in an array, grade them,
 // pick the most approppriate
 
+if (reply == "NO_ANSWER" && tag == "QUESTION_UNKNOWN")
+	reply = hard_question.pick_new();
+
 if (reply == "NO_ANSWER") reply = phatic.pick_new();
 
 el.innerHTML = el.innerHTML + "<br><b>" + reply + "</b>";

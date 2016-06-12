@@ -317,6 +317,7 @@ txt = txt.rep_all(" please tell me ", " tell me ");
 txt = txt.rep_all(" tell me please ", " tell me ");
 txt = txt.rep_all(" tell me how ", " how ");
 txt = txt.rep_all(" tell me what ", " what ");
+txt = txt.rep_all(" i thought i was ", " i am ");
 
 // standartise greeting
 

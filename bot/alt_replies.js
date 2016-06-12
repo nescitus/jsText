@@ -19,6 +19,7 @@
 
 var hello = new LineGetter();
 var phatic = new LineGetter();
+var hard_question = new LineGetter();
 var botname = new LineGetter();
 var dont_repeat = new LineGetter();
 var empty_input = new LineGetter();
@@ -35,7 +36,13 @@ phatic.feed("i'm all ears");
 phatic.feed("carry on, please");
 phatic.feed("you have your way with words, please go on");
 phatic.feed("this sounds like a good story");
-phatic.feed("please continue");
+phatic.feed("please continue, i am listening");
+
+hard_question.feed("i'm afraid i am unable to answer that");
+hard_question.feed("can you simplify it, please?");
+hard_question.feed("i'm just a stupid bot who doesn't know the answer");
+hard_question.feed("try asking an easier question, i'm out of my depth");
+hard_question.feed("sorry, i wasn't programmed to answer that");
 
 botname.feed("my name is Nobot");
 botname.feed("they call me Nobot");
