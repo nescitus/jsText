@@ -81,6 +81,14 @@ txt = txt.rep_all(" o.k. "," ok ");
 
 txt = txt.rep_all(" gonna ", " going to ");
 
+// use easier dictionary
+// (note lack of spaces to deal with 3rd person)
+// (we're dealing with rare words, so wrong
+// match is unlikely)
+
+txt = txt.rep_all("recollect", "remember");
+txt = txt.rep_all("recall", "remember");
+
 // solve long-winded constructions
 
 txt = txt.rep_all(" may i have ", " i want ");

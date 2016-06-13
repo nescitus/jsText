@@ -4,7 +4,9 @@
 //<script src="bot/transform_input.js"></script>
 //<script src="bot/alt_replies.js"></script>
 
+
 var repetition = [];
+var all_topics = [];
 
 function Reply() {
 
@@ -34,6 +36,24 @@ if (txt.contains("?")) {
 
 txt = simplify_user_sentence(txt);
 debug.innerHTML = txt + ' ' + tag;
+
+// set the array of words
+// that will be needed for more precise parsing
+
+var words = txt.split(" ");
+var topic = [];
+
+// feeble attempt at detecting topic
+
+if (tag == "TAG_UNKNOWN") {
+   for (var i = 0; i < words.length; i++) {
+	  if (nounOnList(words[i])) {
+		  topic.push(words[i]);
+		  all_topics.push(words[i]);
+		  debug.innerHTML = debug.innerHTML + ' TOPIC: ' + topic[topic.length -1];
+	  }
+   }
+}
 
 var reply = "NO_ANSWER";
 
