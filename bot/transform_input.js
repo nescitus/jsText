@@ -47,7 +47,7 @@ var simplify_user_sentence = function(txt) {
 
 txt = preprocess_input(txt);
 
-
+txt = reduce_useless(txt);
 txt = add_spaces(txt); // solve missing spaces
 txt = solve_misspellings(txt);
 txt = unwind_verbs(txt);
@@ -98,6 +98,13 @@ txt = txt.rep_all(" tell me please ", " tell me ");
 txt = txt.rep_all(" tell me how ", " how ");
 txt = txt.rep_all(" tell me what ", " what ");
 txt = txt.rep_all(" i thought i was ", " i am ");
+txt = txt.rep_all(" absolutely necessary ", " necessary ");
+txt = txt.rep_all(" absolutely essential ", " essential ");
+txt = txt.rep_all(" advance forward ", " advance ");
+txt = txt.rep_all(" alternative choice ", " choice ");
+txt = txt.rep_all(" as being ", " as ");
+txt = txt.replace(" have to be ", " must be ");
+txt = txt.replace(" has to be ", " must be ");
 
 // standartise greeting
 
