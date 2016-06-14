@@ -111,7 +111,6 @@ if (reply == "NO_ANSWER") {
    // conversation
    
    var markov_reply = markov.make_line(10);
-   alert(markov_reply);
    
    for (var i = 0; i < topic.length; i++) {
 	   if (markov_reply.contains(topic[i])) 
@@ -120,7 +119,6 @@ if (reply == "NO_ANSWER") {
    
    if (reply == "NO_ANSWER") {
    markov_reply = markov.make_line(10);
-   alert(markov_reply);
    
    for (var i = 0; i < topic.length; i++) {
 	   if (markov_reply.contains(topic[i])) 
