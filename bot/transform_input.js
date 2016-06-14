@@ -124,9 +124,9 @@ txt = txt.rep_all(" hi bot ", "HI_USER");
 txt = txt.rep_all(" hi there ", "HI_USER");
 txt = txt.rep_all(" hi ", "HI_USER");
 
-txt = txt.rep_all(" how are you ", "HOW_ARE_YOU");
 txt = txt.rep_all(" how are you feeling ", "HOW_ARE_YOU");
 txt = txt.rep_all(" how are you doing ", "HOW_ARE_YOU");
+txt = txt.rep_all(" how are you ", "HOW_ARE_YOU");
 txt = txt.rep_all(" how do you feel ", "HOW_ARE_YOU");
 txt = txt.rep_all(" how is it going ", "HOW_ARE_YOU");
 txt = txt.rep_all(" how have you been ", "HOW_ARE_YOU");

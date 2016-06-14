@@ -4,9 +4,9 @@
 //<script src="bot/transform_input.js"></script>
 //<script src="bot/alt_replies.js"></script>
 
-
 var repetition = [];
 var all_topics = [];
+var chat_history = [];
 
 function Reply() {
 
@@ -25,6 +25,7 @@ var txt = document.getElementById('chat').value;
 var old_txt = txt;
 
 el.innerHTML = el.innerHTML + "<br>" + old_txt;
+chat_history.push(old_txt);
 
 // tags
 
@@ -92,6 +93,46 @@ if (reply == "NO_ANSWER") {
 
 if (reply == "PROTEST_REPETITION") reply = dont_repeat.pick_new();
 if (reply == "EMPTY_INPUT") reply = empty_input.pick_new();
+
+if (reply == "NO_ANSWER") {
+   var markov = new MarkovByLine();
+   
+   markov.feed("this must start with a sentence containing plenty of repetitions, this will not work otherwise, this does not work at all, this is an error, this is a wrong algorithm");
+   
+   for (var i = 0; i < chat_history.length; i++) {
+      markov.feed(chat_history[i]);
+   }  
+
+   markov.init_tables();   
+   
+   // we give our bot two chances to generate
+   // a sentence on the current topic and one
+   // chance to refer to the topics from the past 
+   // conversation
+   
+   var markov_reply = markov.make_line(10);
+   alert(markov_reply);
+   
+   for (var i = 0; i < topic.length; i++) {
+	   if (markov_reply.contains(topic[i])) 
+		   reply = markov_reply;
+   }
+   
+   if (reply == "NO_ANSWER") {
+   markov_reply = markov.make_line(10);
+   alert(markov_reply);
+   
+   for (var i = 0; i < topic.length; i++) {
+	   if (markov_reply.contains(topic[i])) 
+		   reply = markov_reply;
+   }
+   
+   for (var i = 0; i < all_topics.length; i++) {
+	   if (markov_reply.contains(all_topics[i])) 
+		   reply = markov_reply;
+   }
+   }
+}
 
 // TODO: (long term plan) generate several replies using 
 // different algorithms, stack them in an array, grade them,

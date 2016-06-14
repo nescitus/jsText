@@ -17,6 +17,8 @@
 *    Temple Place - Suite , Boston, MA  -, USA.             *
 ***************************************************************************/
 noun_list = [
+"america",
+"America",
 "people",
 "history",
 "way",

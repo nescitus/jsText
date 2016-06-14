@@ -49,5 +49,6 @@ feed_reply("knock knock", "who is there?");
 feed_reply("ping", "pong");
 feed_reply("to be or not to be", "that is the question");
 feed_reply("what am i", "human, i guess");
+feed_reply("i see", "said the blind man stepping over the cliff. i'd prefer longer answers on your part");
 feed_reply("how old are you", "just a couple of months");
 feed_reply("how old am i", "this question sounds childlish, so my guess is 11... no, 12");
