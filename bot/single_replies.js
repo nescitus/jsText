@@ -41,7 +41,16 @@ function find_reply(to) {
   return "NO_ANSWER";
 }
 
-feed_reply("what is the meaning of life?", "42");
+feed_reply("am i stupid", "a truly stupid person wouldn't even ask this question");
+feed_reply("am i perfect", "it would be sad not being able to improve");
+feed_reply("am i evil", "it's up to you to pick sides, young padawan");
+feed_reply("are you real", "not really. and you don't see what i'm texting, do you?");
+feed_reply("zero", "none?");
+feed_reply("shut up", "why? am i not supposed to chat?");
+feed_reply("life sucks", "like a vacuum cleaner");
+feed_reply("e", "f");
+feed_reply("i do not care", "but why?");
+feed_reply("what is the meaning of life?", "the meaning of life is dead");
 feed_reply("you will like it", "you don't sound too convincing");
 feed_reply("are you sure?", "i don't change my mind that often");
 feed_reply("your place or mine?", "is it raining?");

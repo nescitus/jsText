@@ -98,6 +98,14 @@ if (reply == "NO_ANSWER") {
    var markov = new MarkovByLine();
    
    markov.feed("this must start with a sentence containing plenty of repetitions, this will not work otherwise, this does not work at all, this is an error, this is a wrong algorithm");
+   markov.feed("I find it obvious that the I of my poems, when I employ first-person, could never be me");
+   markov.feed("I can’t write poems without being assured that they will not be understood as autobiography. ");
+   markov.feed("When I regard a completed poem, I relish the fact that I am thoroughly divorced from it");
+   markov.feed("I saw the best minds of my generation destroyed by madness, starving hysterical naked");
+   markov.feed("dragging themselves through the negro streets at dawn looking for an angry fix");
+   markov.feed("angelheaded hipsters burning for the ancient heavenly connection to the starry dynamo in the machinery of night,");
+   markov.feed("who poverty and tatters and hollow-eyed and high sat up smoking in the supernatural darkness of cold-water flats floating across the tops of cities contemplating jazz");
+   markov.feed("who bared their brains to Heaven under the El and saw Mohammedan angels staggering on tenement roofs illuminated");
    
    for (var i = 0; i < chat_history.length; i++) {
       markov.feed(chat_history[i]);
@@ -119,7 +127,7 @@ if (reply == "NO_ANSWER") {
    
    if (reply == "NO_ANSWER") {
    markov_reply = markov.make_line(10);
-   
+
    for (var i = 0; i < topic.length; i++) {
 	   if (markov_reply.contains(topic[i])) 
 		   reply = markov_reply;

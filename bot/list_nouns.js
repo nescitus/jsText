@@ -1063,7 +1063,6 @@ noun_list = [
 "spite",
 "spray",
 "surprise",
-"till",
 "transition",
 "weekend",
 "welcome",

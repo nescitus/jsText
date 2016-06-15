@@ -67,6 +67,7 @@ txt = txt.rep_all(" are u ", " are you ");
 txt = txt.rep_all(" can u ", " can you ");
 txt = txt.rep_all(" ur ", " your ");
 txt = txt.rep_all(" not u ", " not you ");
+txt = txt.rep_all(" pls ", " please ");
 
 txt = txt.rep_all(" yeah "," yes ");
 txt = txt.rep_all(" yea "," yes ");
@@ -76,6 +77,14 @@ txt = txt.rep_all(" I think not "," no ");
 txt = txt.rep_all(" o k "," ok ");
 txt = txt.rep_all(" o. k. "," ok ");
 txt = txt.rep_all(" o.k. "," ok ");
+
+// delete useless adverbs
+
+txt = txt.rep_all(" i absolutely "," i ");
+txt = txt.rep_all(" i accidentally "," i ");
+txt = txt.rep_all(" i actually "," i ");
+txt = txt.rep_all(" i already "," i ");
+txt = txt.rep_all(" i almost "," i ");
 
 // solve colloquial forms
 
@@ -87,7 +96,10 @@ txt = txt.rep_all(" gonna ", " going to ");
 // match is unlikely)
 
 txt = txt.rep_all("recollect", "remember");
+txt = txt.rep_all("recollect", "remember");
 txt = txt.rep_all("recall", "remember");
+txt = txt.rep_all("adore"," love");
+txt = txt.rep_all(" may i "," can i ");
 
 // solve long-winded constructions
 

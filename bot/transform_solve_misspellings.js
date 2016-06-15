@@ -18,7 +18,8 @@
 ***************************************************************************/
 
 var solve_misspellings = function(txt) {
-	
+
+   txt = txt.rep_all(" ahve "," have ");
    txt = txt.rep_all(" becasue "," because ");
    txt = txt.rep_all(" becouse "," because ");
    txt = txt.rep_all(" becuase "," because ");

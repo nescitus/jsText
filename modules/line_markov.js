@@ -65,7 +65,52 @@ MarkovByLine.prototype = {
 
 	preprocess: function(txt) {
 	
-    txt = replace_all(txt, " tell me ", " tell_me ");
+	// we link some common grammatical structures
+	// to ensure better text coherence. It is especially
+	// important because we use only first-order Markov 
+	// chains, but should scale up with higher orders too
+	
+    txt = replace_all(txt, " tell me ", " tell^me ");
+	txt = replace_all(txt, " tell him ", " tell^him ");
+	txt = replace_all(txt, " tell her ", " tell^her ");
+	
+	txt = replace_all(txt, " i will ", " i^will ");
+	txt = replace_all(txt, " will i ", " will^i ");
+	txt = replace_all(txt, " you will ", " you^will ");
+	txt = replace_all(txt, " will you ", " will^you ");
+	
+	txt = replace_all(txt, " i am ", " i^am ");
+	txt = replace_all(txt, " am i ", " am^i ");
+	txt = replace_all(txt, " you are ", " you^are ");
+	txt = replace_all(txt, " are you ", " are^you ");
+	txt = replace_all(txt, " he is ", " he^is ");
+	txt = replace_all(txt, " is he ", " is^he ");
+	txt = replace_all(txt, " she is ", " she^is ");
+	txt = replace_all(txt, " is she ", " is^she ");
+	txt = replace_all(txt, " it is ", " it^is ");
+	txt = replace_all(txt, " is it ", " is^it ");
+	txt = replace_all(txt, " we are ", " we^are ");
+	txt = replace_all(txt, " are we ", " are^we ");
+	txt = replace_all(txt, " they are ", " they^are ");
+	txt = replace_all(txt, " are they ", " are^they ");
+	
+	txt = replace_all(txt, " have you ", " have^you ");
+	txt = replace_all(txt, " you have ", " you^have ");
+	txt = replace_all(txt, " has he ", " has^he ");
+	txt = replace_all(txt, " he has ", " he^has ");
+	txt = replace_all(txt, " has she ", " has^she ");
+	txt = replace_all(txt, " she has ", " she^has ");
+	txt = replace_all(txt, " has it ", " has^it ");
+	txt = replace_all(txt, " it has ", " it^has ");
+	txt = replace_all(txt, " we have ", " we^have ");
+	txt = replace_all(txt, " have we ", " have^we ");
+	txt = replace_all(txt, " they have ", " they^have ");
+	txt = replace_all(txt, " have they ", " have^they ");
+	
+	txt = replace_all(txt, " to ", " to^");
+	txt = replace_all(txt, " the ", " the^");
+	txt = replace_all(txt, " a ", " a^");
+	txt = replace_all(txt, " an ", " an^");
 	
 	return txt;
 	},
@@ -108,11 +153,11 @@ MarkovByLine.prototype = {
       if (line.length < min_length) return this.make_line(min_length);
 	   
 	  var out_txt = line.join(' ');
-	  
 	  // cleanup of special characters
 	  
 	  if (!this.emit_debug) {
 		 out_txt = cleanup_txt(out_txt);  
+		 out_txt = out_txt.rep_all("^", " ");
 	  }
 	  
       return out_txt;
@@ -141,6 +186,7 @@ MarkovByLine.prototype = {
     var new_word = pick_one(next_words);
 	words[position] = new_word;
 	var out_text =words.join(' ');
+
 	return out_text;
 		
 	},
