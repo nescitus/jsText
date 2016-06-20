@@ -146,6 +146,7 @@ txt = txt.rep_all(" how have you been ", "HOW_ARE_YOU");
 txt = txt.rep_all(" are you smart ", "RU_SMART");
 txt = txt.rep_all(" are you clever ", "RU_SMART");
 txt = txt.rep_all(" are you intelligent ", "RU_SMART");
+txt = txt.rep_all(" what is up", "WHATS_UP")
 
 // foul language detection
 

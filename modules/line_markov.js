@@ -111,6 +111,7 @@ MarkovByLine.prototype = {
 	txt = replace_all(txt, " the ", " the^");
 	txt = replace_all(txt, " a ", " a^");
 	txt = replace_all(txt, " an ", " an^");
+	txt = replace_all(txt, " this is ", " this^is");
 	
 	return txt;
 	},
@@ -153,11 +154,11 @@ MarkovByLine.prototype = {
       if (line.length < min_length) return this.make_line(min_length);
 	   
 	  var out_txt = line.join(' ');
+	 
 	  // cleanup of special characters
 	  
 	  if (!this.emit_debug) {
 		 out_txt = cleanup_txt(out_txt);  
-		 out_txt = out_txt.rep_all("^", " ");
 	  }
 	  
       return out_txt;

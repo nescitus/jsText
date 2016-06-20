@@ -8,6 +8,38 @@ var repetition = [];
 var all_topics = [];
 var chat_history = [];
 
+var usr_form = [];
+var bot_form = [];
+
+function FeedForms(usr, bot) {
+   usr_form.push(usr);
+   bot_form.push(bot);
+}
+
+FeedForms("am", "are");
+FeedForms("your", "my");
+FeedForms("me", "you");
+FeedForms("myself", "yourself");
+FeedForms("yourself", "myself");
+FeedForms("i", "you");
+FeedForms("you", "i"); // TODO: differentiate between i and me
+FeedForms("my", "your");
+FeedForms("are", "am");
+
+function GetParaphrase(word) {
+   for (var i = 0; i < usr_form.length; i++) {
+      if (usr_form[i] == word) return bot_form[i];
+   }
+   return word;
+}
+
+function IsParaphrasable(word) {
+   for (var i = 0; i < usr_form.length; i++) {
+      if (usr_form[i] == word) return 1;
+   }
+   return 0;	
+}
+
 function Reply() {
 
 // Find HTML elements that we need
@@ -86,19 +118,19 @@ if (reply == "NO_ANSWER") {
    if (txt == "HI_USER")     reply = hello.pick_new();
    if (txt == "HOW_ARE_YOU") reply = i_feel.pick_new();
    if (txt == "RU_SMART")    reply = smart.pick_new();
+   if (txt == "WHATS_UP")    reply = whatsUpGetter.pick_new();
    if (txt == "USER_SWEARS") reply = user_swears.pick_new();
 }
 
 // special case code for undesired user behaviour
 
 if (reply == "PROTEST_REPETITION") reply = dont_repeat.pick_new();
-if (reply == "EMPTY_INPUT") reply = empty_input.pick_new();
+if (reply == "EMPTY_INPUT")        reply = empty_input.pick_new();
 
 if (reply == "NO_ANSWER") {
    var markov = new MarkovByLine();
    
    markov.feed("this must start with a sentence containing plenty of repetitions, this will not work otherwise, this does not work at all, this is an error, this is a wrong algorithm");
-   markov.feed("I find it obvious that the I of my poems, when I employ first-person, could never be me");
    markov.feed("I can’t write poems without being assured that they will not be understood as autobiography. ");
    markov.feed("When I regard a completed poem, I relish the fact that I am thoroughly divorced from it");
    markov.feed("I saw the best minds of my generation destroyed by madness, starving hysterical naked");
@@ -118,26 +150,35 @@ if (reply == "NO_ANSWER") {
    // chance to refer to the topics from the past 
    // conversation
    
-   var markov_reply = markov.make_line(10);
+   var markov_reply;
    
-   for (var i = 0; i < topic.length; i++) {
-	   if (markov_reply.contains(topic[i])) 
+   for (var i = 0; i < 100; i++) {
+      var markov_reply = markov.make_line(10);
+	   for (var j = 0; j < topic.length; j++) {
+	     if (markov_reply.contains(topic[j])
+		 || markov_reply.contains(all_topics[i]) ) {
 		   reply = markov_reply;
+		 }		 
+       }
    }
-   
-   if (reply == "NO_ANSWER") {
-   markov_reply = markov.make_line(10);
+}
 
-   for (var i = 0; i < topic.length; i++) {
-	   if (markov_reply.contains(topic[i])) 
-		   reply = markov_reply;
-   }
-   
-   for (var i = 0; i < all_topics.length; i++) {
-	   if (markov_reply.contains(all_topics[i])) 
-		   reply = markov_reply;
-   }
-   }
+// paraphrase user sentence, Eliza style.
+// we don't do that too often, as it is only
+// marginally better than generic "carry on" reply;
+
+var can_paraphrase = 0;
+var rand = Math.floor(100 * Math.random());
+if (rand > 75) can_paraphrase = 1;
+
+if (reply == "NO_ANSWER") { 
+if( tag == "TAG_UNKNOWN" 
+&& can_paraphrase == 1) {
+	reply = flatParaphraseGetter.pick_new();
+	for (var i = 0; i < words.length; i++) {
+		reply = reply + ' ' + GetParaphrase(words[i]);
+	}
+}
 }
 
 // TODO: (long term plan) generate several replies using 

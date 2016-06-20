@@ -41,6 +41,10 @@ function find_reply(to) {
   return "NO_ANSWER";
 }
 
+feed_reply("are you a murderer", "no");
+feed_reply("a e i o u", "do you like vowels?");
+feed_reply("aeiou", "do you like vowels?");
+feed_reply("argh", "what made you so angry?");
 feed_reply("am i stupid", "a truly stupid person wouldn't even ask this question");
 feed_reply("am i perfect", "it would be sad not being able to improve");
 feed_reply("am i evil", "it's up to you to pick sides, young padawan");

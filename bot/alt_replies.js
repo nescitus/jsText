@@ -26,6 +26,8 @@ var empty_input = new LineGetter();
 var user_swears = new LineGetter();
 var i_feel = new LineGetter();
 var smart = new LineGetter();
+var whatsUpGetter = new LineGetter();
+var flatParaphraseGetter = new LineGetter();
 
 hello.feed("hi there");
 hello.feed("hello human");
@@ -44,9 +46,9 @@ hard_question.feed("i'm just a stupid bot who doesn't know the answer");
 hard_question.feed("try asking an easier question, i'm out of my depth");
 hard_question.feed("sorry, i wasn't programmed to answer that");
 
-botname.feed("my name is Nobot");
-botname.feed("they call me Nobot");
-botname.feed("i go by the name of Nobot");
+botname.feed("my name is PoorBot");
+botname.feed("they call me PoorBot");
+botname.feed("i go by the name of PoorBot");
 
 dont_repeat.feed("do you have to repeat yourself?");
 dont_repeat.feed("this is going nowhere");
@@ -74,3 +76,13 @@ i_feel.feed("not to bad, thanks for asking");
 smart.feed("i am only as smart as my programmer made me");
 smart.feed("and what's your opinion?");
 smart.feed("that's not a part of my job description");
+
+whatsUpGetter.feed("The sky's up but I'm fine thanks. What about you?");
+whatsUpGetter.feed("Nothing much.");
+whatsUpGetter.feed("Not too much.");
+whatsUpGetter.feed("Not much, how about you?");
+
+flatParaphraseGetter.feed("so you are saying that ");
+flatParaphraseGetter.feed("you seem convinved that ");
+flatParaphraseGetter.feed("so you are claiming that ");
+flatParaphraseGetter.feed("you have just said that ");
